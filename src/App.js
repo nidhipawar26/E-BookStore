@@ -3,7 +3,6 @@ import "./App.css";
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-
 import { HomePage } from "./HomePage";
 import { Apple } from "./Apple";
 import { NotFound } from "./NotFound";
@@ -12,6 +11,8 @@ import { globalsStyles } from "./constants";
 //import Logo from "./images/logo.svg";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "./styles";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const App = () =>  (
@@ -22,6 +23,7 @@ const App = () =>  (
    {/*<img src= {Logo} alt="App Logo"/>*/}
    {/*<img src= "http://localhost:3000/logo192.png" alt="App Logo"/>*/}
    {/*< img src= {`${process.env.REACT_APP_HOSTED_URL}logo192.png`} alt="App Logo" />*/}
+   <ToastContainer/>
   <BrowserRouter>
   <div 
    style={{...globalsStyles.navbar,}}

@@ -6,6 +6,9 @@ import { TextField } from "@mui/material";
 import { Avatar, Popover} from "@mui/material";
 import {Formik} from "formik";
 import  * as Yup from "yup";
+import axios from "axios";
+import { toast } from "react-toastify";
+
 
 
 export const Apple = () => {
@@ -23,8 +26,10 @@ export const Apple = () => {
      }, []);
 
      const validationSchema = Yup.object().shape({
-          name: Yup.string().min(3,"Please enter name with atleats 3 characters"),
-          email:Yup.string().email("Please enter valid email"),
+          name: Yup.string().min(3,"Please enter name with atleats 3 characters")
+          .required("Please enter your name"),
+          email:Yup.string().email("Please enter valid email")
+          .required("Please enter your email"),
      });
 
      const initialValues= {
@@ -34,12 +39,28 @@ export const Apple = () => {
 
      const onFormSubmit = (values) => {
           console.log("on the form submitted",values);
-     
 
-     
-     Navigate("/");
+     const requestData = {
+     userName: values.name,
+     userEmail: values.email,
      };
-
+     //call api to post submit the form
+     axios.post("https://jsonplaceholder.typicode.com/posts",requestData).then((res) => { 
+     if(res.status === 201){
+          console.log(res.data.id);
+     toast.success("API call is completed successfully", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+     }
+     });
+     };
      const handleClick = (event) => {
           console.log(123);
           setAnchorEl(event.currentTarget);
