@@ -3,14 +3,14 @@ import "./App.css";
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { HomePage } from "./HomePage";
+import { HomePage } from "../HomePage";
 import { Apple } from "./Apple";
-import { NotFound } from "./NotFound";
-import { globalsStyles } from "./constants";
+import { NotFound } from "../NotFound";
+import { globalsStyles } from "../constants";
 //import { appStyle } from "./AppStyle.module.css";
 //import Logo from "./images/logo.svg";
 import { ThemeProvider } from "@emotion/react";
-import { theme } from "./styles";
+import { theme } from "../styles";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
